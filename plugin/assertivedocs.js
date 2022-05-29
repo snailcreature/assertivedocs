@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 /**
  * Current working module.
  */
@@ -24,13 +26,15 @@ function assertOnTagged(doclet, tag) {
   const expected = parts[1];
   const test = new Assertion(file[doclet.meta.code.name], args, expected);
 
-  if (!doclet.tests) doclet.tests = [];
-  doclet.tests.push({
+  const result = {
     name: tag.value.name ? tag.value.name : "",
     arguments: args.join(', '),
     expected: expected,
     result: test.assert().toString(),
-  });
+  }
+
+  if (!doclet.tests) doclet.tests = [];
+  doclet.tests.push(result);
   console.log(doclet);
 }
 
@@ -48,4 +52,45 @@ exports.handlers = {
   fileBegin: function(e) {
     file = require(e.filename);
   },
+  processingComplete: function(e) {
+    let out;
+    fs.readFile(path.join(__dirname, '/assertivehead.html'), 'utf8', (_, data) => {
+      out = data;
+      e.doclets.forEach(doclet => {
+        if (doclet.tests) {
+          out += `
+          <h3>${doclet.meta.filename}:${doclet.meta.code.name}</h3>
+          <table class="params">
+            <tr>
+              <td>Test</td>
+              <td>Arguments</td>
+              <td>Expected</td>
+              <td>Results</td>
+            </tr>
+          `;
+          doclet.tests.forEach((test) => {
+            out += `
+              <tr>
+                <td>${test.name}</td>
+                <td>${test.arguments}</td>
+                <td>${test.expected}</td>
+                <td>${test.result}</td>
+              </tr>
+            `;
+          });
+          out += `
+          </table>
+          </body>
+          </html>
+          `;
+        }
+      });
+
+      fs.writeFile(path.join(__dirname, '../docs/unit-tests/index.html'), out, {
+        encoding: 'utf-8',
+      }, (error) => {
+        console.log(error);
+      });
+    });
+  }
 }
