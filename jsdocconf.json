@@ -14,7 +14,10 @@
   },
   "templates": {
     "cleverLinks": false,
-    "monospaceLinks": false
+    "monospaceLinks": false,
+    "default": {
+      "layoutFile": "./plugin/layout.tmpl"
+    }
   },
   "opts": {
     "destination": "./docs"
