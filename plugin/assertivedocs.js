@@ -35,7 +35,6 @@ function assertOnTagged(doclet, tag) {
 
   if (!doclet.tests) doclet.tests = [];
   doclet.tests.push(result);
-  console.log(doclet);
 }
 
 exports.defineTags = function(dictionary) {
@@ -86,11 +85,22 @@ exports.handlers = {
         }
       });
 
-      fs.writeFile(path.join(__dirname, '../docs/unit-tests/index.html'), out, {
-        encoding: 'utf-8',
-      }, (error) => {
-        console.log(error);
-      });
+      if (!fs.existsSync(path.join(__dirname, '../docs/unit-tests/'))) {
+        fs.mkdir(path.join(__dirname, '../docs/unit-tests/'), (err) => {
+          console.log(err);
+          fs.writeFile(path.join(__dirname, '../docs/unit-tests/index.html'), out, {
+            encoding: 'utf-8',
+          }, (error) => {
+            if (error) console.log(error);
+          });
+        });
+      } else {
+        fs.writeFile(path.join(__dirname, '../docs/unit-tests/index.html'), out, {
+          encoding: 'utf-8',
+        }, (error) => {
+          if (error) console.log(error);
+        });
+      }
     });
   }
 }
