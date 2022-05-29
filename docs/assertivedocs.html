@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>assertivedocs: Global</title>
+    <title>assertivedocs: Namespace: assertivedocs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Namespace: assertivedocs</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2></h2>
+        <h2>assertivedocs</h2>
         
     
 </header>
@@ -36,6 +36,8 @@
 <article>
     <div class="container-overview">
     
+        
+            <div class="description"><p>Defines the @assert tag and the supporting logic</p></div>
         
 
         
@@ -67,6 +69,11 @@
 
     
 
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="plugin_assertivedocs.js.html">plugin/assertivedocs.js</a>, <a href="plugin_assertivedocs.js.html#line1">line 1</a>
+    </li></ul></dd>
     
 
     
@@ -94,6 +101,72 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".file"><span class="type-signature">(static) </span>file<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Current working file.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="plugin_assertivedocs.js.html">plugin/assertivedocs.js</a>, <a href="plugin_assertivedocs.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -104,7 +177,7 @@
     
 
     
-    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    <h4 class="name" id=".assertOnTagged"><span class="type-signature">(static) </span>assertOnTagged<span class="signature">(doclet, tag)</span><span class="type-signature"></span></h4>
     
 
     
@@ -112,7 +185,7 @@
 
 
 <div class="description">
-    <p>Adds two numbers together.</p>
+    <p>The function to call when an assert tag is found.</p>
 </div>
 
 
@@ -148,13 +221,13 @@
 
         <tr>
             
-                <td class="name"><code>a</code></td>
+                <td class="name"><code>doclet</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">jsdoc.Doclet</span>
 
 
             
@@ -164,20 +237,20 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The doclet that the tag is in</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>b</code></td>
+                <td class="name"><code>tag</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">jsdoc.Tag</span>
 
 
             
@@ -187,7 +260,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The found tag</p></td>
         </tr>
 
     
@@ -228,7 +301,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="demo_index.js.html">demo/index.js</a>, <a href="demo_index.js.html#line24">line 24</a>
+        <a href="plugin_assertivedocs.js.html">plugin/assertivedocs.js</a>, <a href="plugin_assertivedocs.js.html#line149">line 149</a>
     </li></ul></dd>
     
 
@@ -253,179 +326,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="greet"><span class="type-signature"></span>greet<span class="signature">(name)</span><span class="type-signature"> &rarr; {String}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Greets a person by name.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Name of the person to greet</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="demo_index.js.html">demo/index.js</a>, <a href="demo_index.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">String</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 

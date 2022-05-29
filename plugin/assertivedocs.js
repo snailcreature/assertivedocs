@@ -1,17 +1,77 @@
+/**
+ * @file assertivedocs
+ * @fileoverview Defines the @assert tag and the supporting logic
+ * @namespace assertivedocs
+ */
+
 const fs = require('fs');
 const path = require('path');
 const logger = require('jsdoc/util/logger');
 
 /**
  * Current working file.
+ * @memberof assertivedocs
  */
 let file;
 
+/**
+ * @namespace typeMappings
+ */
 const typeMappings = {
+  /**
+   * Converts the argument to a string. Arguments are a string by default.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {String}
+   */
   string: function(arg) { return arg.toString() },
+  /**
+   * Converts the argument to an integer.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {Number}
+   */
   int: function(arg) { return parseInt(arg) },
+  /**
+   * Converts the argument to a number.
+   * @param {String} arg Argument from the unit test specification
+   * @returns {Number}
+   */
   number: function(arg) { return parseFloat(arg) },
+  /**
+   * Converts the argument to a boolean value.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {Boolean}
+   */
   bool: function(arg) { return ['true', 'false', '1', '0'].includes(arg) },
+  /**
+   * Converts the argument to an array.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {Array}
+   */
+  array: function(arg) { return JSON.parse(arg.replaceAll(';', ',')) },
+  /**
+   * Returns undefined.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {undefined}
+   */
+  undefined: function(arg) { return undefined },
+  /**
+   * Returns null.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {null}
+   */
+  null: function(arg) { return null },
+  /**
+   * Returns NaN.
+   * @param {String} arg - Argument from the unit test specification
+   * @returns {NaN}
+   */
+  NaN: function(arg) { return NaN },
+  /**
+   * Attempts to convert the argument to the given type
+   * @param {String} arg - Argument to convert
+   * @param {String} type - The type to convert to
+   * @returns {String|Number|Boolean|any[]|undefined|null|NaN}
+   */
   convert: function(arg, type) {
     try {
       switch (type) {
@@ -23,14 +83,14 @@ const typeMappings = {
           return typeMappings.number(arg);
         case 'bool':
           return typeMappings.bool(arg);
-        case 'json':
-          return JSON.parse(arg.replaceAll(';', ','));
+        case 'array':
+          return typeMappings.array(arg);
         case 'undefined':
-          return undefined;
+          return typeMappings.undefined(arg);
         case 'null':
-          return null;
+          return typeMappings.null(arg);
         case 'NaN':
-          return NaN;
+          return typeMappings.NaN(arg);
         default:
           return arg;
       };
@@ -43,6 +103,7 @@ const typeMappings = {
 
 /**
  * An object for asserting the truth of the 
+ * @namespace Assertion
  * @param {Function} func - The function to test
  * @param {any[]} args - List of arguments to pass to the function
  * @param {any} expected - The expected result of the function
@@ -81,6 +142,7 @@ function Assertion(func, args, expected) {
 
 /**
  * The function to call when an assert tag is found.
+ * @memberof assertivedocs
  * @param {jsdoc.Doclet} doclet - The doclet that the tag is in
  * @param {jsdoc.Tag} tag - The found tag
  */
