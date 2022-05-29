@@ -1,10 +1,18 @@
 const fs = require('fs');
 const path = require('path');
+const logger = require('jsdoc/util/logger');
 
 /**
  * Current working file.
  */
 let file;
+
+const typeMappings = {
+  string: function(arg) { return arg },
+  int: function(arg) { return parseInt(arg) },
+  number: function(arg) { return parseFloat(arg) },
+  bool: function(arg) { return ['true', 'false', '1', '0'].includes(arg) },
+}
 
 /**
  * An object for asserting the truth of the 
@@ -51,7 +59,27 @@ function Assertion(func, args, expected) {
  */
 function assertOnTagged(doclet, tag) {
   const parts = tag.value.description.split('=>');
-  const args = parts[0].split(',');
+  let args = parts[0].split(',');
+  args = args.map((arg) => {
+    arg = arg.split(':');
+    try {
+      switch (arg[1]) {
+        case 'string':
+          return typeMappings.string(arg[0]); 
+        case 'int':
+          return typeMappings.int(arg[0]);
+        case 'number':
+          return typeMappings.number(arg[0]);
+        case 'bool':
+          return typeMappings.bool(arg[0]);
+        default:
+          return arg[0];
+      };
+    } catch (error) {
+      logger.error(error);
+      return arg[0];
+    }
+  });
   const expected = parts[1];
   const test = new Assertion(file[doclet.meta.code.name], args, expected);
 

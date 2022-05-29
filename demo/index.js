@@ -3,9 +3,10 @@
  * @param {String} name - Name of the person to greet
  * @returns {String}
  * 
- * @assert {Assertion} Test1 - John=>Hello, John!
- * @assert {Assertion} Test2 - Ben=>Hello, John!
- * @assert Test3 - John,Ben=>Hello, John and Ben!
+ * @assert {Assertion} Test1 - John:string=>Hello, John!
+ * @assert {Assertion} Test2 - Ben:string=>Hello, John!
+ * @assert Test3 - John:string,Ben=>Hello, John and Ben!
+ * @assert Test4 - 1:bool=>Hello, true!
  */
 function greet(name) {
   return `Hello, ${name}!`
