@@ -1,13 +1,39 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * Current working file.
+ */
 let file;
 
+/**
+ * An object for asserting the truth of the 
+ * @param {Function} func - The function to test
+ * @param {any[]} args - List of arguments to pass to the function
+ * @param {any} expected - The expected result of the function
+ * @example
+ * function foo(bar) {
+ *  return bar;
+ * }
+ * 
+ * const test = Assertion(foo, ['hello'], 'hello');
+ * // Returns 'true'
+ * console.log(test.assert());
+ * 
+ * @assert {Assertion} Test1 - console.log,[hello]=>undefined
+ */
 function Assertion(func, args, expected) {
   this.func = func ? func : () => {};
   this.args = args;
   this.expected = expected;
 
+  /**
+   * Asserts that the stored function produces
+   * the expected result when passed the given
+   * arguments.
+   * @memberof Assertion
+   * @returns {String}
+   */
   this.assert = function() {
     try {
       const outcome = this.func(...this.args);
@@ -18,6 +44,11 @@ function Assertion(func, args, expected) {
   }
 }
 
+/**
+ * The function to call when an assert tag is found.
+ * @param {jsdoc.Doclet} doclet - The doclet that the tag is in
+ * @param {jsdoc.Tag} tag - The found tag
+ */
 function assertOnTagged(doclet, tag) {
   const parts = tag.value.description.split('=>');
   const args = parts[0].split(',');

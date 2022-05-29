@@ -5,7 +5,7 @@
  * 
  * @assert {Assertion} Test1 - John=>Hello, John!
  * @assert {Assertion} Test2 - Ben=>Hello, John!
- * @assert {Assertion} Test3 - John,Ben=>Hello, John and Ben!
+ * @assert Test3 - John,Ben=>Hello, John and Ben!
  */
 function greet(name) {
   return `Hello, ${name}!`
