@@ -1,3 +1,8 @@
+/**
+ * Current working module.
+ */
+let file;
+
 function Assertion(func, args, expected) {
   this.func = func ? func : () => {};
   this.args = args;
@@ -14,17 +19,19 @@ function Assertion(func, args, expected) {
 }
 
 function assertOnTagged(doclet, tag) {
-  tag.value.type ? console.log(tag.value.type) : console.log("No type");
-
-  //let funcName = eval(doclet.meta.code.name);
-  const file = require(`${doclet.meta.path}/${doclet.meta.filename}`);
-
   const parts = tag.value.description.split('=>');
   const args = parts[0].split(',');
   const expected = parts[1];
   const test = new Assertion(file[doclet.meta.code.name], args, expected);
 
-  console.log(test.assert());
+  if (!doclet.tests) doclet.tests = [];
+  doclet.tests.push({
+    name: tag.value.name ? tag.value.name : "",
+    arguments: args.join(', '),
+    expected: expected,
+    result: test.assert().toString(),
+  });
+  console.log(doclet);
 }
 
 exports.defineTags = function(dictionary) {
@@ -35,4 +42,10 @@ exports.defineTags = function(dictionary) {
     canHaveName: true,
     onTagged: assertOnTagged,
   });
+}
+
+exports.handlers = {
+  fileBegin: function(e) {
+    file = require(e.filename);
+  },
 }
