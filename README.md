@@ -1,4 +1,4 @@
 # assertivedocs
 Unit test plugin for JSDoc
 
-[Read the docs](assertivedocs.snail.codes)
+[Read the docs](https://assertivedocs.snail.codes)
