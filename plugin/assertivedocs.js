@@ -93,7 +93,6 @@ function assertOnTagged(doclet, tag) {
   });
   let expected = parts[1].split(':');
   expected = expected.length > 1 ? typeMappings.convert(expected[0], expected[1]) : expected[0];
-  console.log(expected);
   const test = new Assertion(file[doclet.meta.code.name], args, expected);
 
   const result = {
@@ -157,18 +156,18 @@ exports.handlers = {
 
       if (!fs.existsSync(path.join(__dirname, '../docs/unit-tests/'))) {
         fs.mkdir(path.join(__dirname, '../docs/unit-tests/'), (err) => {
-          console.log(err);
+          logger.error(err);
           fs.writeFile(path.join(__dirname, '../docs/unit-tests/index.html'), out, {
             encoding: 'utf-8',
           }, (error) => {
-            if (error) console.log(error);
+            if (error) logger.error(error);
           });
         });
       } else {
         fs.writeFile(path.join(__dirname, '../docs/unit-tests/index.html'), out, {
           encoding: 'utf-8',
         }, (error) => {
-          if (error) console.log(error);
+          if (error) logger.error(error);
         });
       }
     });
