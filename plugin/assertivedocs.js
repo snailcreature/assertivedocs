@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-/**
- * Current working module.
- */
+
 let file;
 
 function Assertion(func, args, expected) {
@@ -58,29 +56,29 @@ exports.handlers = {
       e.doclets.forEach(doclet => {
         if (doclet.tests) {
           out += `
-          <h3>${doclet.meta.filename}:${doclet.meta.code.name}</h3>
-          <table class="params">
-            <tr>
-              <td>Test</td>
-              <td>Arguments</td>
-              <td>Expected</td>
-              <td>Results</td>
-            </tr>
+  <h3>${doclet.meta.filename}:${doclet.meta.code.name}</h3>
+  <table class="params">
+    <tr>
+      <td>Test</td>
+      <td>Arguments</td>
+      <td>Expected</td>
+      <td>Results</td>
+    </tr>
           `;
           doclet.tests.forEach((test) => {
             out += `
-              <tr>
-                <td>${test.name}</td>
-                <td>${test.arguments}</td>
-                <td>${test.expected}</td>
-                <td>${test.result}</td>
-              </tr>
+    <tr>
+      <td>${test.name}</td>
+      <td>${test.arguments}</td>
+      <td>${test.expected}</td>
+      <td>${test.result}</td>
+    </tr>
             `;
           });
           out += `
-          </table>
-          </body>
-          </html>
+  </table>
+</body>
+</html>
           `;
         }
       });
