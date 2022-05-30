@@ -1,7 +1,6 @@
 /**
  * @file assertivedocs
  * @fileoverview Defines the @assert tag and the supporting logic
- * @namespace assertivedocs
  */
 
 const fs = require('fs');
@@ -142,7 +141,7 @@ function Assertion(func, args, expected) {
 
 /**
  * The function to call when an assert tag is found.
- * @memberof assertivedocs
+ * @namespace assertivedocs
  * @param {jsdoc.Doclet} doclet - The doclet that the tag is in
  * @param {jsdoc.Tag} tag - The found tag
  */
