@@ -20,6 +20,9 @@
     }
   },
   "opts": {
-    "destination": "./docs"
+    "destination": "./docs",
+    "encoding": "utf8",
+    "tutorials": "./tutorials",
+    "readme": "./jsdocReadme.md"
   }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>assertivedocs: Source: demo/index.js</title>
+    <title>assertivedocs: Tutorial: 2. Assertions</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,59 +17,36 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: demo/index.js</h1>
+    <h1 class="page-title">Tutorial: 2. Assertions</h1>
 
-    
-
-
-
-    
     <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @file
- * @fileoverview A set of example functions with attached assertions.
- */
 
-/**
- * Greets a person by name.
- * @param {String} name - Name of the person to greet
- * @returns {String}
- * 
- * @assert {Assertion} Test1 - John:string=>Hello, John!
- * @assert {Assertion} Test2 - Ben:string=>Hello, John!
- * @assert Test3 - John:string,Ben=>Hello, John and Ben!
- * @assert Test4 - 1:bool=>Hello, true!:string
- * @assert - John=>Hello, John!
- * @assert - John Smith=>Hello, John Smith!
- */
-function greet(name) {
-  return `Hello, ${name}!`
-}
+<header>
+    
+    <ul>
+        <li><a href="tutorial-firstassertion.html">2.1 Your First Assertion</a></li>
+    
+        <li><a href="tutorial-typeoperators.html">2.2 Type Operators</a></li>
+    
+        <li><a href="tutorial-nullnanundefined.html">2.3 Null, NaN, and Undefined (Oh My!)</a></li>
+    </ul>
+    
 
-/**
- * Adds two numbers together.
- * @param {Number} a
- * @param {Number} b 
- * @returns {Number}
- * 
- * @assert - 1:number,2:number=>3:number
- */
-function add(a, b) {
-  return a + b;
-}
+    <h2>2. Assertions</h2>
+</header>
 
-console.log(greet("John"));
+<article>
+    <p>An assertion is the primary form of testing available in assertivedocs, and they take the form of
+<code>&lt;list,of,arguments&gt;=&gt;&lt;expected_output&gt;</code>.</p>
+<p>In <a href="/tutorial-firstassertion.html">Tutorial 2.1</a>, you will learn how to create a basic assertion in
+your documentation.</p>
+<p><a href="/tutorial-typeoperators.html">Tutorial 2.2</a> covers how to specify the type of your arguments and
+the expected output.</p>
+<p>Finally, <a href="/tutorial-nullnanundefined.html">Tutorial 2.3</a> teaches you how to use the <code>undefined</code>,
+<code>null</code>, and <code>NaN</code> values in your arguments and expected outputs.</p>
+</article>
 
-module.exports = {
-  greet,
-  add,
-}</code></pre>
-        </article>
-    </section>
-
-
-
+</section>
 
 </div>
 
