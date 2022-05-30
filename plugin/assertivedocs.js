@@ -22,7 +22,7 @@ const typeMappings = {
    * @param {String} arg - Argument from the unit test specification
    * @returns {String}
    */
-  string: function(arg) { return arg.toString() },
+  string: function(arg) { return arg },
   /**
    * Converts the argument to an integer.
    * @param {String} arg - Argument from the unit test specification
@@ -249,4 +249,9 @@ exports.handlers = {
       }
     });
   }
+}
+
+module.exports = {
+  Assertion,
+  assertOnTagged,
 }

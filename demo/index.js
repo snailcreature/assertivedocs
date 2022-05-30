@@ -13,7 +13,6 @@
  * @assert Test3 - John:string,Ben=>Hello, John and Ben!
  * @assert Test4 - 1:bool=>Hello, true!:string
  * @assert - John=>Hello, John!
- * @assert - John Smith=>Hello, John Smith!
  */
 function greet(name) {
   return `Hello, ${name}!`
