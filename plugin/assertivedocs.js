@@ -118,8 +118,20 @@ const typeMappings = {
  * @assert {Assertion} Test1 - console.log,["hello"]:json=>:undefined
  */
 function Assertion(func, args, expected) {
+  /**
+   * Function to be assessed.
+   * @memberof Assertion
+   */
   this.func = func ? func : () => {};
+  /**
+   * The arguments to be passed to the function.
+   * @memberof Assertion
+   */
   this.args = args;
+  /**
+   * The expected result when the function is passed the arguments.
+   * @memberof Assertion
+   */
   this.expected = expected;
 
   /**
@@ -191,23 +203,27 @@ exports.handlers = {
   <h3>${doclet.meta.filename}:${doclet.meta.code.name}</h3>
   <table class="params">
     <tr>
-      <td>Test</td>
-      <td>Arguments</td>
-      <td>Expected</td>
-      <td>Results</td>
+      <thead>
+        <th>Test</th>
+        <th>Arguments</th>
+        <th>Expected</th>
+        <th class="last">Results</th>
+      </thead>
     </tr>
+    <tbody>
           `;
           doclet.tests.forEach((test) => {
             out += `
-    <tr>
-      <td>${test.name}</td>
-      <td>${test.arguments}</td>
-      <td>${test.expected}</td>
-      <td>${test.result}</td>
-    </tr>
+      <tr>
+        <td>${test.name}</td>
+        <td>${test.arguments}</td>
+        <td>${test.expected}</td>
+        <td class="last">${test.result}</td>
+      </tr>
             `;
           });
           out += `
+    </tbody>
   </table>
 </body>
 </html>
