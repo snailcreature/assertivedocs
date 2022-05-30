@@ -28,7 +28,127 @@
 </header>
 
 <article>
-    
+    <p>In the <a href="/tutorial-firstassertion.html">previous Tutorial</a> we looked at how to write
+an assertion. However, you may have noticed that there is a small problem with the
+basic definition of an assertion: It assumes all arguments and expected values are
+strings. This is where type operators come in.</p>
+<h2>The Operators</h2>
+<p>There are currently 5 type operators: <code>:string</code> for Strings, <code>:int</code> for integer
+values, <code>:number</code> for float values, <code>:bool</code> for Booleans, and <code>:array</code> for Arrays.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Type</strong></th>
+<th><strong>Operator</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td><code>:string</code></td>
+</tr>
+<tr>
+<td>Integer</td>
+<td><code>:int</code></td>
+</tr>
+<tr>
+<td>Float</td>
+<td><code>:number</code></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>:bool</code></td>
+</tr>
+<tr>
+<td>Array</td>
+<td><code>:array</code></td>
+</tr>
+</tbody>
+</table>
+<p>To use a type operator, put it immediately after an argument or expected value.
+For example, if I had the assertion <code>2,3=&gt;5</code> where <code>2</code>, <code>3</code>, and <code>5</code> are numbers
+and <code>5</code> is the sum of <code>2</code> and <code>3</code>. By default, assertivedocs will read these
+values as strings, meaning that the sum of <code>2</code> and <code>3</code> will return <code>23</code> - a
+concatenation - rather than the intended <code>5</code>, meaning the assertion is <code>false</code>.
+We can use <code>:number</code> or <code>:int</code> to tell assertivedocs that these are numbers:
+<code>2:int,3:int=&gt;5:int</code>. This assertion will now resolve as <code>true</code>.</p>
+<h2>Examples</h2>
+<h3><code>:string</code></h3>
+<p>By default, assertivedocs assumes all arguments and expected values are strings,
+however it is still good practice to include the <code>:string</code> operator to make it
+clear what you mean. Self-documenting code, even in documentation, is very useful.</p>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * Concatenates two words.
+ * @param {String} wordA - The first word
+ * @param {String} wordB - The second word
+ * @returns {String}
+ * 
+ * @assert ConcatTest1 - Hello:string,World:string=>HelloWorld:string
+ */ 
+function concat(wordA, wordB) {
+  return wordA + wordB;
+}
+</code></pre>
+<h3><code>:int</code> and <code>:number</code></h3>
+<p>Vanilla JavaScript does not have an Integer type, so for all intents and
+purposes, <code>:int</code> and <code>:number</code> are the same operator. However, any value
+tagged with the <code>:int</code> operator will be converted to an integer, so they
+are not interchangeable.</p>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * Does the + form of the quadratic equation.
+ * @param {Number} a
+ * @param {Number} b
+ * @param {Number} c
+ * @returns {Number}
+ * 
+ * @assert QuadTest1 - 2:int,3:int,-4:int=>0.8507810593582121:number
+ */ 
+function quadEquationPlus(a, b, c) {
+  return (-b + (b**2 - 4*a*c)**0.5)/(2*a);
+}
+</code></pre>
+<h3><code>:bool</code></h3>
+<p>A boolean value is either <code>true</code> or <code>false</code>, but can also be <code>1</code> or <code>0</code>. The
+<code>:bool</code> operator reflects this, allowing you to tag <code>true</code>, <code>false</code>, <code>1</code>, or
+<code>0</code> as a boolean.</p>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * Performs the && operator on two values.
+ * @param {Boolean} operandA
+ * @param {Boolean} operandB
+ * @returns {Boolean}
+ * 
+ * @assert AndTest1 - true:bool,false:bool=>false:bool
+ */ 
+function and(operandA, operandB) {
+  return operandA && operandB
+}
+</code></pre>
+<h3><code>:array</code></h3>
+<p><code>:array</code> works slightly differently to the other operators. assertivedocs works
+by splitting assertions first on equals greater than '<code>=&gt;</code>', then on comma '<code>,</code>',
+and finally on colon '<code>:</code>'. This poses a problem for arrays, as they use commas
+as element separators by default. Therefore, in assertivedocs assertions, you define
+arrays using semicolons '<code>;</code>' as the element separator. Other than that, the
+definition of the array is the same: assertivedocs replaces all the semicolons with
+commas and then uses <code>JSON.parse()</code> to convert the string into an <code>Array</code>.</p>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * Outputs all the elements of an array to the console.
+ * @param {any[]} array - The array
+ * @returns {String}
+ * 
+ * @assert ListTest1 - [&quot;Hello&quot;;&quot;World&quot;;1;2;3]:array=>Complete:string
+ */ 
+function listAll(array) {
+  array.forEach((element) => {
+    console.log(element);
+  });
+  return &quot;Complete&quot;
+}
+</code></pre>
+<h2>Summary</h2>
+<p>In this Tutorial, we looked at how to convert the values used to create an
+assertion into different types.</p>
+<p>The next <a href="/tutorial-nullnanundefined.html">Tutorial covers how assertivedocs handles undefined, null, and NaN</a>.</p>
 </article>
 
 </section>
@@ -46,7 +166,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon May 30 2022 03:28:37 GMT+0100 (British Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon May 30 2022 11:19:52 GMT+0100 (British Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -90,8 +90,32 @@ provided. Next is the list of given arguments. Third is the expected value of th
 shows whether the given arguments provide the expected result, either `true` or `false`. The table for this 
 example can be found on this project's [`Unit Tests` page](/unit-tests).
 
+## Naming Your Assertions
+
+It is good practice to name your tests: It makes it easier to know where each unit test comes from in the code, 
+making debugging unexpected results easier. To name your assertion, put a single-word name between `@assert` and 
+the '`-`'.
+
+```javascript
+/**
+ * Greets a person by name.
+ * @param {String} name - Name of the person to greet
+ * @returns {String}
+ * 
+ * @assert GreetTest1 - John=>Hello, John!
+ */
+function greet(name) {
+  return `Hello, ${name}!`
+}
+
+module.exports = {
+  greet,
+}
+```
+
 ## Summary
 
-This tutorial has covered how to make an assertion and how to view the results.
+This tutorial has covered how to make an assertion, how to view the result of that assertion, and how to 
+name your assertions for better documentation.
 
 The [next Tutorial will cover how to change the type of the arguments and expected value](/tutorial-typeoperators.html).
