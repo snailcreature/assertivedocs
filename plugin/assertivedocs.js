@@ -179,7 +179,7 @@ function assertOnTagged(doclet, tag) {
   doclet.tests.push(result);
 }
 
-exports.defineTags = function(dictionary) {
+const defineTags = function(dictionary) {
   // Definition of @assert
   dictionary.defineTag('assert', {
     mustHaveValue: true,
@@ -189,7 +189,7 @@ exports.defineTags = function(dictionary) {
   });
 }
 
-exports.handlers = {
+const handlers = {
   fileBegin: function(e) {
     file = require(e.filename);
   },
@@ -252,6 +252,11 @@ exports.handlers = {
 }
 
 module.exports = {
+  // Plugin definition
+  defineTags,
+  handlers,
+
+  // Plugin documnentation; allows assertions to be run on this file
   Assertion,
   assertOnTagged,
 }

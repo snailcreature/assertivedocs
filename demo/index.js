@@ -25,6 +25,7 @@ function greet(name) {
  * @returns {Number}
  * 
  * @assert - 1:number,2:number=>3:number
+ * @assert - 1:number,2:number=>5:number
  */
 function add(a, b) {
   return a + b;
