@@ -2,7 +2,7 @@
   "name": "assertivedocs",
   "version": "0.1.0",
   "description": "Unit test plugin for JSDoc",
-  "main": "index.js",
+  "main": "plugin/assertivedocs.js",
   "scripts": {
     "start": "npx http-server docs",
     "build": "jsdoc -r -c jsdocconf.json",

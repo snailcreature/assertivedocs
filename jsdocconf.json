@@ -1,5 +1,5 @@
 {
-  "plugins": ["plugins/markdown", "plugin/assertivedocs"],
+  "plugins": ["plugins/markdown", "plugin/assertivedocs/assertivedocs"],
   "recurseDepth": 10,
   "source": {
     "include": ["./plugin", "./demo"],
@@ -16,7 +16,7 @@
     "cleverLinks": false,
     "monospaceLinks": false,
     "default": {
-      "layoutFile": "./plugin/layout.tmpl"
+      "layoutFile": "./plugin/assertivedocs/layout.tmpl"
     }
   },
   "opts": {
