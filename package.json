@@ -24,5 +24,8 @@
   "homepage": "https://assertivedocs.snail.codes",
   "devDependencies": {
     "jsdoc": "^3.6.10"
+  },
+  "dependencies": {
+    "assertivedocs": "^0.1.0"
   }
 }
