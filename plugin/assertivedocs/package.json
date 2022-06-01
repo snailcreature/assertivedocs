@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/snailcreature/assertivedocs/issues"
   },
-  "homepage": "https://github.com/snailcreature/assertivedocs#readme",
+  "homepage": "https://assertivedocs.snail.codes",
   "dependencies": {
     "jsdoc": "^3.6.10"
   }
