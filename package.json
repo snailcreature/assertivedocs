@@ -1,0 +1,26 @@
+{
+  "name": "assertivedocs",
+  "version": "0.1.0",
+  "description": "JSDoc unit testing plugin",
+  "main": "assertivedocs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snailcreature/assertivedocs.git"
+  },
+  "keywords": [
+    "testing",
+    "unit-testing"
+  ],
+  "author": "snailcreature",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snailcreature/assertivedocs/issues"
+  },
+  "homepage": "https://github.com/snailcreature/assertivedocs#readme",
+  "dependencies": {
+    "jsdoc": "^3.6.10"
+  }
+}
