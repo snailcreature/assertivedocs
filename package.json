@@ -1,8 +1,8 @@
 {
-  "name": "assertivedocs",
+  "name": "assertivedocs-main",
   "version": "0.1.0",
   "description": "Unit test plugin for JSDoc",
-  "main": "plugin/assertivedocs.js",
+  "main": "plugin/assertivedocs/assertivedocs.js",
   "scripts": {
     "start": "npx http-server docs",
     "build": "jsdoc -r -c jsdocconf.json",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snailcreature/assertivedocs.git"
+    "url": "git+https://github.com/snailcreature/assertivedocs-main.git"
   },
   "author": "SnailCreature",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/snailcreature/assertivedocs/issues"
   },
-  "homepage": "https://github.com/snailcreature/assertivedocs#readme",
+  "homepage": "https://github.com/snailcreature/assertivedocs-main#readme",
   "devDependencies": {
     "jsdoc": "^3.6.10"
   }
