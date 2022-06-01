@@ -12,23 +12,20 @@ code, making testing faster and shorter.
 
 Here's how to get your project set up with assertivedocs.
 
-1. Download the plugin files from [GitHub](https://github.com/snailcreature/assertivedocs/tree/main/plugin). 
-The three files you need are `assertivedocs.js`, `assertivehead.html`, and `layout.tmpl`. `assertivedocs.js` 
-is the heart of the plugin. It provides the functionality and does all the work. `assertivehead.html` is the 
-basis for the [test results page](/unit-tests). The results are added to this page when the documentation is 
-finished being parsed. Finally, `layout.tmpl` is a modified page template for JSDoc to use instead of the 
-standard template.
+1. Install assertive docs by running the below command in your terminal open in your project directory.
 
-2. Create a `plugin` folder in the root directory of your project. It should be on the same level as your 
-`node_modules` folder and your `package.json`.
+```
+npm i assertivedocs
+```
 
-3. Place the plugin files you downloaded in the first step in your new `plugin` folder.
+2. Add `assertivedocs/assertivedocs` to `plugins` in your JSDoc config file. If you haven't made a 
+config file for JSDoc, [make one](https://jsdoc.app/about-configuring-jsdoc.html) and [make JSDoc use it when running](https://jsdoc.app/about-commandline.html).
 
-4. Make sure your `jsdoc` call is configured to output to a `docs` folder, also in the root of your project. 
-This can be done by using the `-d` or `--destination` [command line options](https://jsdoc.app/about-commandline.html), 
-or by setting `opts.destination` in a [config file](https://jsdoc.app/about-configuring-jsdoc.html).
+3. In your JSDoc config file, set `opts.destination` to `"./docs"`. This will output your generated 
+documentation to this folder. At this point in time, assertivedocs will only work if you output 
+your docs to this directory.
 
-5. Finally, tell JSDoc to use the `layout.tmpl` file instead of the default layout file. Do this by setting `templates.default.layoutFile` 
-in a config file. For an example of this, see the [`jsconf.json` file for this project](https://github.com/snailcreature/assertivedocs/blob/main/jsdocconf.json).
+4. Finally, set `template.default.layoutFile` to `"assertivedocs/layout.tmpl"`. This will ensure 
+there is a link to your unit test results in your documentation's navigation menu.
 
 Now, you're all set! Check out [Tutorial 2](/tutorial-assertions.html) for how to start creating assertions.
