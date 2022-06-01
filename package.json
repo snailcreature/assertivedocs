@@ -12,7 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/snailcreature/assertivedocs-main.git"
   },
-  "author": "SnailCreature",
+  "keywords": [
+    "testing",
+    "unit-testing"
+  ],
+  "author": "snailcreature",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/snailcreature/assertivedocs/issues"
