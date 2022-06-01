@@ -1,6 +1,6 @@
 {
-  "name": "assertivedocs-main",
-  "version": "0.1.0",
+  "name": "assertivedocs",
+  "version": "0.2.0",
   "description": "Unit test plugin for JSDoc",
   "main": "plugin/assertivedocs/assertivedocs.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snailcreature/assertivedocs-main.git"
+    "url": "git+https://github.com/snailcreature/assertivedocs.git"
   },
   "keywords": [
     "testing",
