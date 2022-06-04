@@ -1,11 +1,9 @@
 {
   "name": "assertivedocs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Unit test plugin for JSDoc",
   "main": "plugin/assertivedocs/assertivedocs.js",
   "scripts": {
-    "start": "npx http-server docs",
-    "build": "jsdoc -r -c jsdocconf.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -6,6 +6,11 @@
 const fs = require('fs');
 const path = require('path');
 const logger = require('jsdoc/util/logger');
+const env = require('jsdoc/env');
+
+const cwd = process.cwd();
+
+const destination = env.opts.destination || '';
 
 /**
  * Current working file.
@@ -231,17 +236,17 @@ const handlers = {
         }
       });
 
-      if (!fs.existsSync(path.join(__dirname, '../../docs/unit-tests/'))) {
-        fs.mkdir(path.join(__dirname, '../../docs/unit-tests/'), (err) => {
+      if (!fs.existsSync(path.join(cwd, destination, 'unit-tests/'))) {
+        fs.mkdir(path.join(cwd, destination, 'unit-tests/'), (err) => {
           logger.error(err);
-          fs.writeFile(path.join(__dirname, '../../docs/unit-tests/index.html'), out, {
+          fs.writeFile(path.join(cwd, destination, 'unit-tests/index.html'), out, {
             encoding: 'utf-8',
           }, (error) => {
             if (error) logger.error(error);
           });
         });
       } else {
-        fs.writeFile(path.join(__dirname, '../../docs/unit-tests/index.html'), out, {
+        fs.writeFile(path.join(cwd, destination, 'unit-tests/index.html'), out, {
           encoding: 'utf-8',
         }, (error) => {
           if (error) logger.error(error);
