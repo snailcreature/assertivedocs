@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snailcreature/assertivedocs-main.git"
+    "url": "git+https://github.com/snailcreature/assertivedocs.git"
   },
   "keywords": [
     "testing",
@@ -19,7 +19,7 @@
   "author": "snailcreature",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/snailcreature/assertivedocs-main/issues"
+    "url": "https://github.com/snailcreature/assertivedocs/issues"
   },
   "homepage": "https://assertivedocs.snail.codes",
   "devDependencies": {
