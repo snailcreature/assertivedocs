@@ -35,7 +35,7 @@ The most basic form of unit test is an assertion: `@assert - <list,of,arguments>
  * 
  * @assert - John=>Hello, John!
  */
-function greet(name) {
+function greet(name) {`
   return `Hello, ${name}!`
 }
 
