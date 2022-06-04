@@ -22,8 +22,7 @@ npm i assertivedocs
 config file for JSDoc, [make one](https://jsdoc.app/about-configuring-jsdoc.html) and [make JSDoc use it when running](https://jsdoc.app/about-commandline.html).
 
 3. In your JSDoc config file, set `opts.destination` to `"./docs"`. This will output your generated 
-documentation to this folder. At this point in time, assertivedocs will only work if you output 
-your docs to this directory.
+documentation to this folder, with the unit test results in a `"unit-tests"` folder. `Note: As of 0.3.0 you can call your destination folder anything you would like.`
 
 4. Finally, set `template.default.layoutFile` to `"assertivedocs/layout.tmpl"`. This will ensure 
 there is a link to your unit test results in your documentation's navigation menu.

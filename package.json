@@ -26,6 +26,6 @@
     "jsdoc": "^3.6.10"
   },
   "dependencies": {
-    "assertivedocs": "^0.1.0"
+    "assertivedocs": "file:../assertivedocs"
   }
 }

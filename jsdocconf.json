@@ -1,9 +1,9 @@
 {
-  "plugins": ["plugins/markdown", "plugin/assertivedocs/assertivedocs"],
+  "plugins": ["plugins/markdown", "assertivedocs/assertivedocs"],
   "recurseDepth": 10,
   "source": {
     "include": ["./plugin", "./demo"],
-    "exclude": ["./node_modules", "./plugin/assertivedocs/node_modules"],
+    "exclude": ["./node_modules"],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
