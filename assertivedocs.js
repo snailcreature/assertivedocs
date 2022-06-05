@@ -191,7 +191,7 @@ function assertOnTagged(doclet, tag) {
 
   const result = {
     name: tag.value.name ? tag.value.name : "",
-    arguments: args.join(', '),
+    arguments: args.map((arg) => typeof arg === 'object' ? JSON.stringify(arg) : arg ).join(', '),
     expected: expected,
     result: test.assert().toString(),
   }
