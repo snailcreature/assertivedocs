@@ -110,8 +110,8 @@ const typeMappings = {
    * typeMappings as a mixin.
    */
   modify: function() {
-    if (env.opts.assertivedocs.customMap) {
-      const { typeMappingsMixin } = require(path.join(cwd, env.opts.assertivedocs.customMap));
+    if (env.opts.assertivedocs.customObjects) {
+      const { typeMappingsMixin } = require(path.join(cwd, env.opts.assertivedocs.customObjects));
       Object.assign(typeMappings, typeMappingsMixin);
     }
   }

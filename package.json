@@ -1,6 +1,6 @@
 {
   "name": "assertivedocs",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Unit test plugin for JSDoc",
   "main": "plugin/assertivedocs/assertivedocs.js",
   "scripts": {
