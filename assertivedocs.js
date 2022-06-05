@@ -96,7 +96,7 @@ const typeMappings = {
         case 'NaN':
           return typeMappings.NaN(arg);
         case 'object':
-          return typeMappings.object ? typeMappings.object(arg) : arg;
+          return typeMappings.object ? typeMappings.object(arg) : {};
         default:
           return arg;
       };
