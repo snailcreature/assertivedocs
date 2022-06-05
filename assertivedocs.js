@@ -95,6 +95,8 @@ const typeMappings = {
           return typeMappings.null(arg);
         case 'NaN':
           return typeMappings.NaN(arg);
+        case 'object':
+          return typeMappings.object ? typeMappings.object(arg) : arg;
         default:
           return arg;
       };
@@ -102,8 +104,22 @@ const typeMappings = {
       logger.error(error);
       return arg;
     }
+  },
+  /**
+   * Checks that a custom object map has been provided and attempts to add it to 
+   * typeMappings as a mixin.
+   */
+  modify: function() {
+    if (env.opts.assertivedocs.customMap) {
+      const { typeMappingsMixin } = require(path.join(cwd, env.opts.assertivedocs.customMap));
+      Object.assign(typeMappings, typeMappingsMixin);
+    }
   }
 }
+
+// Attempt to load mixin
+typeMappings.modify();
+
 
 /**
  * An object for asserting the truth of the 
