@@ -179,16 +179,26 @@ function Assertion(func, args, expected) {
  * @param {jsdoc.Tag} tag - The found tag
  */
 function assertOnTagged(doclet, tag) {
+  // Split tag value description on =>
   const parts = tag.value.description.split('=>');
+
+  // Get all the arguments to parse
   let args = parts[0].split(',');
+
+  // Get the type converted arguments
   args = args.map((arg) => {
     arg = arg.split(':');
     return typeMappings.convert(arg[0], arg[1]);
   });
+
+  // Get the expected result
   let expected = parts[1].split(':');
   expected = expected.length > 1 ? typeMappings.convert(expected[0], expected[1]) : expected[0];
+
+  // Create new Assertion
   const test = new Assertion(file[doclet.meta.code.name], args, expected);
 
+  // Create formatted unit test result for docs
   const result = {
     name: tag.value.name ? tag.value.name : "",
     arguments: args.map((arg) => typeof arg === 'object' ? JSON.stringify(arg) : arg ).join(', '),
@@ -196,6 +206,7 @@ function assertOnTagged(doclet, tag) {
     result: test.assert().toString(),
   }
 
+  // Assign the result to the doclet
   if (!doclet.tests) doclet.tests = [];
   doclet.tests.push(result);
 }
